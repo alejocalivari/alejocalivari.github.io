@@ -222,6 +222,19 @@
             transform: translateY(-2px);
         }
 
+        .btn-wallet {
+            background: linear-gradient(45deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.5));
+            border: 1px solid rgba(34, 197, 94, 0.6);
+            color: #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-wallet:hover {
+            background: linear-gradient(45deg, rgba(34, 197, 94, 0.5), rgba(34, 197, 94, 0.7));
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+            transform: translateY(-2px);
+        }
+
         .btn-large {
             padding: 1rem 2rem;
             font-size: 1.1rem;
@@ -373,36 +386,85 @@
         .projects-card {
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(251, 146, 60, 0.3);
+            border: 1px solid rgba(34, 197, 94, 0.4);
             border-radius: 12px;
             padding: 3rem;
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(251, 146, 60, 0.1);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .projects-card:hover {
-            border-color: rgba(251, 146, 60, 0.6);
-            box-shadow: 0 0 30px rgba(251, 146, 60, 0.3);
+            border-color: rgba(34, 197, 94, 0.7);
+            box-shadow: 0 0 40px rgba(34, 197, 94, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .projects-card::before {
+            content: "💰 MI PROYECTO PRINCIPAL";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-align: center;
         }
 
         .projects-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 16px rgba(251, 146, 60, 0.8));
+            font-size: 5rem;
+            margin: 2rem 0 1.5rem 0;
+            filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.8));
         }
 
         .projects-title {
-            font-size: 1.5rem;
-            color: #fbbf24;
+            font-size: 2rem;
+            color: #22c55e;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .projects-subtitle {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .projects-description {
             font-size: 1rem;
             color: #9ca3af;
             margin-bottom: 2rem;
             font-style: italic;
+        }
+
+        .projects-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
         /* Contact Section */
@@ -536,6 +598,10 @@
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
+            .projects-features {
+                grid-template-columns: 1fr;
+            }
+
             .contact-info {
                 flex-direction: column;
                 gap: 1rem;
@@ -614,11 +680,11 @@
                 🚀 Construyendo mi camino en el desarrollo web y fintech
             </p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
+                <a href="#projects" class="btn btn-secondary">
                     📁 Ver Proyectos
                 </a>
-                <a href="https://github.com/alejocalivari?tab=repositories" target="_blank" class="btn btn-secondary">
-                    💻 Explorar Repositorios
+                <a href="#" class="btn btn-wallet" onclick="alert('Aquí pondrás el link a tu wallet cuando esté lista!')">
+                    💰 Mi Wallet
                 </a>
                 <a href="https://github.com/alejocalivari" target="_blank" class="btn btn-outline">
                     🐙 GitHub
@@ -650,12 +716,13 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-icon">🚀</span>
-                        <h3 class="card-title">🛠️ ¿Qué estoy construyendo?</h3>
+                        <span class="card-icon">💰</span>
+                        <h3 class="card-title">🛠️ Mi Wallet Personal</h3>
                     </div>
                     <div class="card-content">
-                        <p>Esta web es mi laboratorio digital: Un lugar donde comparto lo que voy aprendiendo, mis proyectos, y cómo transformo ideas en código.</p>
-                        <p>Estoy desarrollando una web tipo wallet personal donde se pueda ver todo lo que uno tiene: activos, proyectos, inversiones. Quiero que sea visual, simple y funcional, como todo lo que me gusta hacer.</p>
+                        <p>Desarrollé una aplicación web tipo wallet donde puedo trackear mi portafolio completo: activos, proyectos, inversiones con rendimientos mensuales, anuales e históricos.</p>
+                        <p>Es visual, simple y funcional - exactamente como me gusta hacer las cosas. Un dashboard personal donde puedo ver todo lo que tengo y cómo está performando en tiempo real.</p>
+                        <p><strong>Estado:</strong> ✅ <span style="color: #22c55e;">Funcional y en uso</span></p>
                     </div>
                 </div>
             </div>
@@ -726,11 +793,22 @@
         <div class="container">
             <h2 class="section-title">🚀 Proyectos</h2>
             <div class="projects-card">
-                <div class="projects-icon">💻</div>
-                <h3 class="projects-title">Explora mis repositorios y descubre en qué estoy trabajando</h3>
-                <p class="projects-subtitle">Cada proyecto es un paso más en mi aprendizaje</p>
-                <a href="https://github.com/alejocalivari?tab=repositories" target="_blank" class="btn btn-primary btn-large">
-                    🔗 Ver todos mis proyectos
+                <div class="projects-icon">💰</div>
+                <h3 class="projects-title">Mi Wallet Personal</h3>
+                <p class="projects-subtitle">Dashboard completo para trackear mi portafolio de inversiones</p>
+                <p class="projects-description">Una aplicación web funcional donde gestiono todos mis activos y analizo rendimientos</p>
+                
+                <div class="projects-features">
+                    <div class="feature-item">Seguimiento en tiempo real</div>
+                    <div class="feature-item">Rendimientos mensuales</div>
+                    <div class="feature-item">Análisis histórico</div>
+                    <div class="feature-item">Dashboard visual</div>
+                    <div class="feature-item">Gestión de activos</div>
+                    <div class="feature-item">Reportes automáticos</div>
+                </div>
+
+                <a href="#" class="btn btn-wallet btn-large" onclick="alert('Aquí pondrás el link a tu wallet!')">
+                    💰 Ir a Mi Wallet
                 </a>
             </div>
         </div>
