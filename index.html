@@ -23,6 +23,64 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
             color: white;
             line-height: 1.6;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Loader */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f0f0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader-circle {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 4px solid transparent;
+            border-top: 4px solid #22c55e;
+            border-right: 4px solid #fbbf24;
+            border-bottom: 4px solid #f97316;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        .loader-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fbbf24, #f97316, #ef4444);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Navigation */
@@ -94,11 +152,15 @@
             text-align: center;
             padding: 2rem;
             position: relative;
+            padding-top: 80px; /* Espacio para la navbar */
         }
 
         .hero-content {
             max-width: 800px;
-            animation: fadeInUp 1s ease-out;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.5s;
         }
 
         .hero-avatar {
@@ -243,6 +305,14 @@
         /* Sections */
         .section {
             padding: 5rem 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .container {
@@ -588,6 +658,7 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                margin-bottom: 4rem; /* Más espacio para la flecha */
             }
 
             .about-grid {
@@ -622,6 +693,10 @@
                 display: none;
             }
 
+            .hero {
+                padding-top: 100px; /* Más espacio para la foto en móvil */
+            }
+
             .hero-title {
                 font-size: 2rem;
             }
@@ -643,6 +718,10 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .scroll-indicator {
+                bottom: 1rem; /* Ajuste para móvil */
+            }
         }
 
         /* Focus states for accessibility */
@@ -654,6 +733,14 @@
     </style>
 </head>
 <body>
+    <!-- Loader -->
+    <div class="loader-container" id="loader">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-logo">aleclv</div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -680,7 +767,7 @@
                 🚀 Construyendo mi camino en el desarrollo web y fintech
             </p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn btn-secondary">
+                <a href="https://github.com/alejocalivari?tab=repositories" target="_blank" class="btn btn-secondary">
                     📁 Ver Proyectos
                 </a>
                 <a href="https://alejocalivari.github.io/https-alejocalivari-wallet.github.io/" target="_blank" class="btn btn-wallet">
@@ -710,8 +797,8 @@
                         <h3 class="card-title">Mi Historia</h3>
                     </div>
                     <div class="card-content">
-                        <p>Soy Alejo Calivari, desarrollador en formación con base en Argentina. Mi camino empezó entre cables, consolas y enchufes, y hoy estoy metido de lleno en el mundo del desarrollo web y la tecnología financiera.</p>
-                        <p>Actualmente estudio Licenciatura en Sistemas, pero mi formación va mucho más allá del aula: vengo creando, invirtiendo y resolviendo cosas desde chico. Este sitio es parte de ese viaje.</p>
+                        <p>Soy Alejo Calivari, Argentino desarrollador en formación. Mi camino empezó entre cables, consolas y enchufes, y hoy estoy metido de lleno en el mundo del desarrollo web y la tecnología financiera.</p>
+                        <p>Actualmente estudio Licenciatura en Sistemas, pero mi formación va mucho más allá del aula: vengo creando, invirtiendo y resolviendo cosas desde chico. Esta web es parte de ese viaje.</p>
                     </div>
                 </div>
                 <div class="card">
@@ -783,7 +870,7 @@
             </div>
 
             <div class="tech-philosophy">
-                <p><em>"Diseño simple, limpio y real."</em></p>
+                <p><em>"Diseño simple, limpio y funcional."</em></p>
             </div>
         </div>
     </section>
@@ -807,7 +894,7 @@
                     <div class="feature-item">Reportes automáticos</div>
                 </div>
 
-                <a href="#" class="btn btn-wallet btn-large" onclick="alert('Aquí pondrás el link a tu wallet!')">
+                <a href="https://alejocalivari.github.io/https-alejocalivari-wallet.github.io/" target="_blank" class="btn btn-wallet">
                     💰 Ir a Mi Wallet
                 </a>
             </div>
@@ -852,5 +939,52 @@
             <p class="footer-note">Hecho con HTML y CSS 💛</p>
         </div>
     </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.opacity = '0';
+                document.getElementById('loader').style.visibility = 'hidden';
+                document.body.classList.add('loaded');
+            }, 1000); // 2 segundos de loader
+        });
+
+        // Animaciones al hacer scroll
+        const sections = document.querySelectorAll('.section');
+        
+        function checkSections() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkSections);
+        window.addEventListener('load', checkSections);
+        
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
