@@ -531,12 +531,78 @@
         }
 
         .feature-item::before {
-            content: "✓";
+            content: "\2713";
             color: #22c55e;
             font-weight: bold;
             font-size: 1rem;
         }
+        /* Latest Repos Section */
+        #latest-repos #repo-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
 
+        #latest-repos .repo-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgba(251, 146, 60, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        #latest-repos .repo-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(251, 146, 60, 0.6);
+            box-shadow: 0 0 30px rgba(251, 146, 60, 0.25);
+        }
+
+        #latest-repos .repo-name {
+            font-size: 1.2rem;
+            color: #fbbf24;
+            margin-bottom: 0.75rem;
+            word-break: break-word;
+        }
+
+        #latest-repos .repo-description {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        #latest-repos .repo-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        #latest-repos .repo-meta-item {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        #latest-repos .repo-link {
+            color: #fb923c;
+            text-decoration: none;
+        }
+
+        #latest-repos .repo-link:hover {
+            text-decoration: underline;
+        }
+
+        #latest-repos .repo-error-wrap {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        #latest-repos .repo-error {
+            color: #d1d5db;
+            margin-bottom: 0.75rem;
+        }
         /* Contact Section */
         .contact-card {
             background: rgba(0, 0, 0, 0.6);
@@ -710,7 +776,7 @@
             }
 
             .projects-card,
-            .contact-card {
+        /* Contact Section */
                 padding: 2rem;
             }
 
@@ -899,7 +965,13 @@
             </div>
         </div>
     </section>
-
+    <!-- Latest Repos Section -->
+    <section id="latest-repos" class="section">
+        <div class="container">
+            <h2 class="section-title">Últimos repos</h2>
+            <div id="repo-list"></div>
+        </div>
+    </section>
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
@@ -938,7 +1010,7 @@
             <p class="footer-note">Hecho con HTML y CSS </p>
         </div>
     </footer>
-
+    <script defer src="repos.js"></script>
     <script>
         // Loader
         window.addEventListener('load', function() {
