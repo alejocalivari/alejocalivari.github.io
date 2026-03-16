@@ -397,6 +397,42 @@
             box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
         }
 
+        /* Learning Section */
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .learning-card {
+            height: 100%;
+        }
+
+        .learning-list {
+            list-style: none;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .learning-list li {
+            position: relative;
+            padding-left: 1rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .learning-list li::before {
+            content: "";
+            position: absolute;
+            top: 0.65rem;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(45deg, #fbbf24, #f97316);
+            box-shadow: 0 0 10px rgba(251, 146, 60, 0.55);
+        }
+
         /* Tech Section */
         .tech-category {
             margin-bottom: 3rem;
@@ -775,6 +811,12 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .learning-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-menu {
                 gap: 1rem;
@@ -875,6 +917,12 @@
             }
         }
 
+        @media (max-width: 640px) {
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Focus states for accessibility */
         .btn:focus-visible,
         .nav-link:focus-visible {
@@ -947,6 +995,7 @@
                     <div class="card-content">
                         <p>Soy Alejo Calivari, desarrollador Argentino en formación. Mi camino empezó entre cables, consolas y enchufes, y hoy estoy metido de lleno en el mundo del desarrollo web y la tecnología financiera.</p>
                         <p>Actualmente estudio Licenciatura en Sistemas, pero mi formación va mucho más allá del aula: vengo creando, invirtiendo y resolviendo cosas desde chico. Esta web es parte de ese viaje.</p>
+                        <p>Actualmente estoy cursando el programa <strong>IBM Full Stack Cloud Developer</strong> en Coursera, donde estoy profundizando en desarrollo web moderno, JavaScript, APIs y Python mientras construyo proyectos propios.</p>
                     </div>
                 </div>
                 <div class="card construction-card">
@@ -1016,9 +1065,7 @@
                 </div>
             </div>
 
-            <div class="tech-philosophy">
-                <p><em>"Diseño simple, limpio y funcional."</em></p>
-            </div>
+            
         </div>
     </section>
 
@@ -1124,6 +1171,72 @@
             </div>
         </div>
     </section>
+
+    <!-- Learning Section -->
+    <section id="learning" class="section">
+        <div class="container">
+            <h2 class="section-title">🧠 Qué estoy aprendiendo</h2>
+            <p class="section-subtitle">Conceptos y habilidades que estoy desarrollando mientras avanzo en mi formación como developer.</p>
+
+            <div class="learning-grid">
+                <article class="card learning-card">
+                    <div class="card-header">
+                        <span class="card-icon">🧩</span>
+                        <h3 class="card-title">Arquitectura</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="learning-list">
+                            <li>Separación de HTML, CSS y JavaScript</li>
+                            <li>Organización de funciones pequeñas</li>
+                            <li>Estructura limpia del código</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="card learning-card">
+                    <div class="card-header">
+                        <span class="card-icon">🎨</span>
+                        <h3 class="card-title">Frontend</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="learning-list">
+                            <li>Manipulación del DOM</li>
+                            <li>Eventos en JavaScript</li>
+                            <li>Interfaces responsive</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="card learning-card">
+                    <div class="card-header">
+                        <span class="card-icon">🌐</span>
+                        <h3 class="card-title">APIs</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="learning-list">
+                            <li>Consumo de APIs REST</li>
+                            <li>Manejo de errores</li>
+                            <li>Estados de carga</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="card learning-card">
+                    <div class="card-header">
+                        <span class="card-icon">⚡</span>
+                        <h3 class="card-title">UX</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="learning-list">
+                            <li>Feedback visual en interfaces</li>
+                            <li>Hover states y microinteracciones</li>
+                            <li>Accesibilidad básica</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
@@ -1158,7 +1271,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Alejo Calivari. Construyendo el futuro, una línea de código a la vez.</p>
+            <p>© 2026 Alejo Calivari.</p>
             <p class="footer-note">Hecho con HTML y CSS </p>
         </div>
     </footer>
