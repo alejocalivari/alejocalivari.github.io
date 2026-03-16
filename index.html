@@ -537,21 +537,14 @@
             --project-glow: rgba(249, 115, 22, 0.22);
         }
 
-        .project-card-link {
+        .project-card-content {
             position: relative;
             z-index: 1;
             display: flex;
             flex-direction: column;
             height: 100%;
             padding: 1.6rem;
-            text-decoration: none;
             color: inherit;
-        }
-
-        .project-card-link:focus-visible {
-            outline: 2px solid #fbbf24;
-            outline-offset: -8px;
-            border-radius: 24px;
         }
 
         .project-card-top {
@@ -630,36 +623,47 @@
 
         .project-card-footer {
             margin-top: auto;
-        }
-
-        .project-card-button {
-            display: inline-flex;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
             align-items: center;
-            gap: 0.55rem;
-            padding: 0.72rem 1.1rem;
-            border-radius: 999px;
-            border: 1px solid rgba(251, 191, 36, 0.28);
-            background: rgba(251, 146, 60, 0.08);
-            color: #fbbf24;
-            font-weight: 600;
+        }
+
+        .project-card-cta {
+            flex: 1 1 calc(50% - 0.35rem);
+            min-width: 0;
+            padding: 0.72rem 1rem;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-card-arrow {
-            transition: transform 0.3s ease;
+        .project-card-cta--demo {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(249, 115, 22, 0.14));
+            border-color: rgba(251, 191, 36, 0.28);
+            color: #fbbf24;
         }
 
-        .project-card:hover .project-card-button,
-        .project-card:focus-within .project-card-button {
+        .project-card-cta--demo:hover,
+        .project-card-cta--demo:focus-visible,
+        .project-card:hover .project-card-cta--demo,
+        .project-card:focus-within .project-card-cta--demo {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.16), rgba(249, 115, 22, 0.14));
             border-color: var(--project-accent);
             box-shadow: 0 14px 28px rgba(249, 115, 22, 0.2);
         }
 
-        .project-card:hover .project-card-arrow,
-        .project-card:focus-within .project-card-arrow {
-            transform: translateX(4px);
+        .project-card-cta--code {
+            background: rgba(15, 15, 15, 0.82);
+            border-color: rgba(251, 146, 60, 0.24);
+            color: #fed7aa;
+        }
+
+        .project-card-cta--code:hover,
+        .project-card-cta--code:focus-visible,
+        .project-card:hover .project-card-cta--code,
+        .project-card:focus-within .project-card-cta--code {
+            background: rgba(251, 146, 60, 0.08);
+            border-color: rgba(251, 191, 36, 0.38);
+            box-shadow: 0 14px 28px rgba(251, 146, 60, 0.16);
         }
 
         .project-card:hover .project-card-icon,
@@ -838,7 +842,7 @@
                 padding: 1.5rem;
             }
 
-            .project-card-link,
+            .project-card-content,
             .contact-card {
                 padding: 1.35rem;
             }
@@ -859,6 +863,11 @@
 
             .project-card-top {
                 align-items: center;
+            }
+
+            .project-card-footer .btn {
+                flex-basis: 100%;
+                max-width: none;
             }
 
             .scroll-indicator {
@@ -1021,7 +1030,7 @@
 
             <div class="projects-grid">
                 <article class="project-card project-card--calculator">
-                    <a href="https://alejocalivari.github.io/calculator/" target="_blank" rel="noopener noreferrer" class="project-card-link" aria-label="Abrir proyecto Calculadora">
+                    <div class="project-card-content">
                         <div class="project-card-top">
                             <div class="project-card-icon-wrap">
                                 <span class="project-card-icon" aria-hidden="true">🧮</span>
@@ -1041,16 +1050,18 @@
                         </div>
 
                         <div class="project-card-footer">
-                            <span class="project-card-button">
-                                Ver calculadora
-                                <span class="project-card-arrow" aria-hidden="true">→</span>
-                            </span>
+                            <a href="https://alejocalivari.github.io/calculator/" target="_blank" rel="noopener noreferrer" class="btn project-card-cta project-card-cta--demo">
+                                Ver demo
+                            </a>
+                            <a href="https://github.com/alejocalivari/calculator" target="_blank" rel="noopener noreferrer" class="btn project-card-cta project-card-cta--code">
+                                🐙 Código
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </article>
 
                 <article class="project-card project-card--weather">
-                    <a href="https://alejocalivari.github.io/weather/" target="_blank" rel="noopener noreferrer" class="project-card-link" aria-label="Abrir proyecto Clima">
+                    <div class="project-card-content">
                         <div class="project-card-top">
                             <div class="project-card-icon-wrap">
                                 <span class="project-card-icon" aria-hidden="true">⛅</span>
@@ -1070,16 +1081,18 @@
                         </div>
 
                         <div class="project-card-footer">
-                            <span class="project-card-button">
-                                Ver app del clima
-                                <span class="project-card-arrow" aria-hidden="true">→</span>
-                            </span>
+                            <a href="https://alejocalivari.github.io/weather/" target="_blank" rel="noopener noreferrer" class="btn project-card-cta project-card-cta--demo">
+                                Ver demo
+                            </a>
+                            <a href="https://github.com/alejocalivari/weather" target="_blank" rel="noopener noreferrer" class="btn project-card-cta project-card-cta--code">
+                                🐙 Código
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </article>
 
                 <article class="project-card project-card--github">
-                    <a href="https://alejocalivari.github.io/repos/" target="_blank" rel="noopener noreferrer" class="project-card-link" aria-label="Abrir proyecto GitHub Explorer">
+                    <div class="project-card-content">
                         <div class="project-card-top">
                             <div class="project-card-icon-wrap">
                                 <span class="project-card-icon" aria-hidden="true">🐙</span>
@@ -1099,12 +1112,14 @@
                         </div>
 
                         <div class="project-card-footer">
-                            <span class="project-card-button">
-                                Ver GitHub Explorer
-                                <span class="project-card-arrow" aria-hidden="true">→</span>
-                            </span>
+                            <a href="https://alejocalivari.github.io/repos/" target="_blank" rel="noopener noreferrer" class="btn project-card-cta project-card-cta--demo">
+                                Ver demo
+                            </a>
+                            <a href="https://github.com/alejocalivari/repos" target="_blank" rel="noopener noreferrer" class="btn project-card-cta project-card-cta--code">
+                                🐙 Código
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </article>
             </div>
         </div>
